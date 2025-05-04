@@ -29,7 +29,7 @@
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Abubakarashrafi/clipquery.git
+git clone https://github.com/Abubakarashrafi/ClipQuery.git
 cd clipquery
 ```
 
