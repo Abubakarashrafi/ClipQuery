@@ -9,7 +9,6 @@ from langchain_cohere import CohereEmbeddings, ChatCohere
 import os
 
 load_dotenv()
-cohere_api_key = os.getenv("COHERE_API_KEY")
 
 def get_transcript(url):
     try:
@@ -23,7 +22,7 @@ def build_chain(transcript):
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     chunks = splitter.create_documents([transcript])
 
-    embeddings = CohereEmbeddings(model="embed-english-v3.0", cohere_api_key=cohere_api_key)
+    embeddings = CohereEmbeddings(model="embed-english-v3.0")
     vector_store = FAISS.from_documents(chunks, embeddings)
     retriever = vector_store.as_retriever(search_type="similarity", search_kwargs={"k": 2})
 
@@ -41,7 +40,7 @@ Question: {question}
         input_variables=["context", "question"]
     )
 
-    llm = ChatCohere(cohere_api_key=cohere_api_key)
+    llm = ChatCohere()
     parser = StrOutputParser()
 
     def format_docs(docs):
