@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with YouTube Videos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/utilities.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div class="app-container">
+       
+        <header class="app-header">
+            <div class="brand">
+                <i class="fab fa-youtube logo-icon"></i>
+                <h1 class="app-title">VideoChat AI</h1>
+            </div>
+            <div class="header-actions">
+                <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="settings-btn" aria-label="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+
+        
+        <main class="main-content">
+            
+            <section class="video-section">
+                <div class="video-container" id="video-container">
+                    <div class="video-placeholder">
+                        <i class="fab fa-youtube placeholder-icon"></i>
+                        <p>Enter a YouTube URL to begin</p>
+                    </div>
+                </div>
+
+            <div class="video-controls card">
+                <div class="input-group">
+                    <div class="url-input-container">
+                        <input type="text" id="video-url" placeholder="Paste YouTube URL here..." class="input-control">
+                        <button class="clear-input" id="clear-url" aria-label="Clear URL">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <button id="load-video" class="btn-primary">
+                        <span class="btn-text">Load</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+                <div class="processing-status card">
+                    <div class="status-header">
+                        <h3>Video Processing</h3>
+                        <div class="progress-indicator" id="progress-indicator">
+                            <div class="progress-bar"></div>
+                            <span class="progress-text">0%</span>
+                        </div>
+                    </div>
+                    <div id="processing-details" class="status-details">
+                        Ready to process video content
+                    </div>
+                </div>
+            </section>
+
+            
+            <section class="chat-section">
+                <div class="chat-header card">
+                    <div class="chat-title">
+                        <i class="fas fa-comments"></i>
+                       
+                    </div>
+                    <div class="chat-actions">
+                        <button class="btn-icon" id="clear-chat" aria-label="Clear chat">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="chat-messages">
+                  
+                </div>
+
+                <div class="chat-input card">
+                    <div class="input-group">
+                        <input type="text" id="user-input" placeholder="Ask about the video..." class="input-control"
+                            disabled>
+                        <button id="send-button" class="btn-primary" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                            
+                        </button>
+                    </div>
+                    <div class="input-footer">
+                        <small class="hint-text">AI may produce inaccurate information about the video</small>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+   
+    <div class="modal" id="settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="btn-icon modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label for="api-endpoint">API Endpoint</label>
+                    <input type="text" id="api-endpoint" class="input-control"
+                        placeholder="https://your-api.com/endpoint">
+                </div>
+                <div class="setting-item">
+                    <label for="model-select">AI Model</label>
+                    <select id="model-select" class="input-control">
+                        <option value="gpt-4">GPT-4</option>
+                        <option value="gpt-3.5" selected>GPT-3.5</option>
+                        <option value="claude">Claude</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="save-settings">
+                    Save Settings
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script/app.js"></script>
+</body>
+
+</html>
